@@ -25,12 +25,12 @@ hs_err_pid*
 
 .gitignore
 .gradle/
-.idea/
-build.gradle
+# .idea/
+# build.gradle
 build/
 gradle/
 gradlew
 gradlew.bat
 out/
 settings.gradle
-src/
+
