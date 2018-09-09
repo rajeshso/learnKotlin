@@ -4,6 +4,8 @@ import org.junit.Test
 import com.raj.ctci.isUnique
 import com.raj.ctci.checkPermutation
 import com.raj.ctci.urlify
+import com.raj.ctci.oneedit
+import org.junit.Ignore
 import kotlin.test.*
 
 class TestCtci {
@@ -48,6 +50,26 @@ class TestCtci {
     fun `urlify for Mr John Smith without trailing spaces should return "Mr%20John%20Smith"`() {
         assertEquals("Mr%20John%20Smith", urlify("Mr John Smith"))
 
+    }
+
+    @Test
+    fun `Given pale and ple shoult return true`() {
+        assertTrue ("Given pale and ple shoult return true") { oneedit("pale", "ple") }
+    }
+
+    @Test
+    fun `Given pales and pale shoult return true`() {
+        assertTrue ("Given pale and ple shoult return true") { oneedit("pales", "pale") }
+    }
+
+    @Test
+    fun `Given pale and bale should return true`() {
+        assertTrue ("Given pale and ple shoult return true") { oneedit("pale", "bale") }
+    }
+
+    @Test
+    fun `Given pale and bale should return false`() {
+        assertFalse ("Given pale and bake should return true") { oneedit("pale", "bake") }
     }
 
 }

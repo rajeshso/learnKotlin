@@ -1,5 +1,7 @@
 package com.raj.ctci
 
+import java.util.*
+
 //Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 //This is working - non recursive
@@ -66,6 +68,51 @@ fun urlify(s : String) : String {
 }
 
 
+
+//One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+//EXAMPLE
+//pale, pIe -> true pales. pale -> true pale. bale -> true pale. bake -> false
+//TODO Two use cases are yet to be solved
+//fun oneedit(a : String, b: String) : Boolean {
+//    val bitset = BitSet(a.length)
+//    val aArr = a.toCharArray()
+//    val bArr = b.toCharArray()
+//    var count = 0
+//    fun flip(b: Boolean, index: Int) {
+//        if (b) {
+//            bitset.flip(index)
+//            count++
+//        }
+//    }
+//    aArr.withIndex().map {
+//       if (count<bArr.size) flip((it.value == bArr[count]), it.index)
+//    }
+//    return ( (a.length - bitset.cardinality()) == 1 )
+//}
+
+fun oneedit(s: String, t: String) : Boolean {
+
+    val (longer, shorter) = if (s.length > t.length) Pair(s, t) else Pair(t, s)
+
+    fun isDeletion(l: String, s: String): Boolean {
+        return l.length > s.length
+    }
+
+    fun countEdits(l: String, s: String) : Int{
+        return when(s.isEmpty()){
+            true -> l.length
+            false -> if( l.take(1) == s.take(1)) {
+                countEdits(l.drop(1), s.drop(1))
+            } else if( isDeletion(l , s) ) {
+                1 + countEdits(l.drop(1), s)
+            } else {
+                1 + countEdits(l.drop(1), s.drop(1))
+            }
+
+        }
+    }
+    return countEdits(longer, shorter) <= 1
+}
 
 //fun add(a:Int) = { b:Int -> a+b }
 //add(1)(2)
