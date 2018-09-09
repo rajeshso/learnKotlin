@@ -1,7 +1,6 @@
 package com.raj.ctci
 
-import java.util.*
-
+// crackingthecodinglnterview
 //Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 //This is working - non recursive
@@ -113,6 +112,25 @@ fun oneedit(s: String, t: String) : Boolean {
     }
     return countEdits(longer, shorter) <= 1
 }
+
+//String Compression: Implement a method to perform basic string compression using the counts of repeated characters.
+//For example, the string aabcccccaaa would become a2b1c5a3. If the "compressed" string would not become smaller than the
+//original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a - z).
+fun compress(s1 : String) : String {
+
+    fun compressRecursive(s : String, acc: String): String {
+        if (s.isEmpty()) return acc
+        val firstChar = s.take(1).toCharArray().first()
+        val len = s.length - s.dropWhile { it.toChar() == firstChar }.length
+        val remainingChars = s.dropWhile { it.toChar() == firstChar }
+        return compressRecursive(remainingChars, acc.plus(firstChar).plus(len))
+    }
+
+    return compressRecursive(s1, "")
+}
+
+
+
 
 //fun add(a:Int) = { b:Int -> a+b }
 //add(1)(2)

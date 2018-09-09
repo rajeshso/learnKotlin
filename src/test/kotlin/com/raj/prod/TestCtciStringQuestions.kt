@@ -5,7 +5,7 @@ import com.raj.ctci.isUnique
 import com.raj.ctci.checkPermutation
 import com.raj.ctci.urlify
 import com.raj.ctci.oneedit
-import org.junit.Ignore
+import com.raj.ctci.compress
 import kotlin.test.*
 
 class TestCtci {
@@ -70,6 +70,16 @@ class TestCtci {
     @Test
     fun `Given pale and bale should return false`() {
         assertFalse ("Given pale and bake should return true") { oneedit("pale", "bake") }
+    }
+
+    @Test
+    fun `Given aabcccccaaa return a2b1c5a3`() {
+        assertEquals  ( "a2b1c5a3", compress("aabcccccaaa") )
+    }
+
+    @Test
+    fun `Given aabb return a2b2`() {
+        assertEquals  ( "a2b2", compress("aabb") )
     }
 
 }
