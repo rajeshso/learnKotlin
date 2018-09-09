@@ -1,7 +1,5 @@
 package com.raj.ctci
 
-import java.util.*
-
 //Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
 
 //This is working - non recursive
@@ -54,9 +52,17 @@ fun checkPermutation(a: String, b: String) : Boolean  {
 //EXAMPLE
 //Input: "Mr John Smith " J 13 Output: "Mr%20J ohn%20Smith"
 //Rough working
+//fun urlify(s : String) : String {
+//    val trimmedStr = s.trim()
+//    return trimmedStr.replace(" ","%20")
+//}
+
 fun urlify(s : String) : String {
-    val trimmedStr = s.trim()
-    return trimmedStr.replace(" ","%20")
+    val sCharArray = s.toCharArray()
+    val trimmedStrList = sCharArray.dropLastWhile{it == ' '}
+    val trimmedStr = trimmedStrList.joinToString (separator = "")
+    fun transform(a: Char) = if (a == ' ') "%20" else a
+    return trimmedStr.map { transform(it) }.joinToString (separator = "")
 }
 
 

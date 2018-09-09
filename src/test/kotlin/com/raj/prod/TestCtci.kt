@@ -4,7 +4,6 @@ import org.junit.Test
 import com.raj.ctci.isUnique
 import com.raj.ctci.checkPermutation
 import com.raj.ctci.urlify
-//import com.raj.ctci.countTrailingWhiteSpace
 import kotlin.test.*
 
 class TestCtci {
@@ -51,8 +50,4 @@ class TestCtci {
 
     }
 
-//    @Test
-//    fun `countTrailingSpace should return 2 for 2 spaces`() {
-//        assertEquals(2, countTrailingWhiteSpace("a  ".toCharArray(), 0))
-//    }
 }
