@@ -1,11 +1,12 @@
 package com.raj.prod
 
-import org.junit.Test
+
 import com.raj.ctci.isUnique
 import com.raj.ctci.checkPermutation
 import com.raj.ctci.urlify
 import com.raj.ctci.oneedit
 import com.raj.ctci.compress
+import org.junit.jupiter.api.Test
 import kotlin.test.*
 
 class TestCtci {

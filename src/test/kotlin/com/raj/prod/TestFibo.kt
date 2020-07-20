@@ -5,7 +5,8 @@ import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
-import org.junit.Assert.assertEquals
+import kotlin.test.assertEquals
+
 
 class TestFibo : Spek({
     describe("given 0 and 1") {
