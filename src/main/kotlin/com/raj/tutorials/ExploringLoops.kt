@@ -38,9 +38,12 @@ fun main(x: Array<String>): Unit {
     println()
     (9 downTo 0).forEach{print(" | $it ")}
     println()
-    (0 until 9).forEach{print(" | $it ")} //exclude 0
+    (0 until 9).forEach{print(" | $it ")} //exclude 9
     println()
     (0 until 9 step 2).forEach{print(" | $it ")}
     println()
     ('A'..'I').forEach{print(" | $it ")}
+    println()
+    (34..36 step 2).forEach{print(" | $it ")}
+    println()
 }
