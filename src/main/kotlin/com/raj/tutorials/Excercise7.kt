@@ -10,8 +10,8 @@ data class KotlinPerson(val id: Long, val title: String,
     companion object {
         fun getAge(dateOfBirth: Calendar?): Int? {
             if (dateOfBirth == null) return null
-            val today = GregorianCalendar();
-            val years = today.get(YEAR) - dateOfBirth.get(YEAR);
+            val today = GregorianCalendar()
+            val years = today.get(YEAR) - dateOfBirth.get(YEAR)
             return if (dateOfBirth.get(DAY_OF_YEAR) >= today.get(YEAR)) years -1 else years
         }
     }
@@ -52,7 +52,7 @@ data class KotlinPerson(val id: Long, val title: String,
         //GOOD WAY OF USING SWITCH
         return when (color) {
             "" -> "empty"
-            "RED","BLUE","GREEN"-> "rgb"
+            "RED","BLUE","GEN"-> "rgb"
             else -> "other"
         }
     }
@@ -60,7 +60,7 @@ data class KotlinPerson(val id: Long, val title: String,
 
 }
 
-    fun main(args: Array<String>): Unit {
+    fun main(args: Array<String>) {
         val john = KotlinPerson(1L, "Mr", "John", "Blue", GregorianCalendar(1977, 9, 3))
         val jane = KotlinPerson(2L, "Mrs", "Jane", "Green", null)
         println("${john.firstName}'s age is ${john.age}")
