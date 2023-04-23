@@ -1,10 +1,6 @@
 package com.raj.tutorials
 
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-
-fun main(x: Array<String>): Unit {
+fun main(x: Array<String>) {
     val people = ArrayList<KotlinPerson>()
     people.add(KotlinPerson(1,"Mr","Rajesh","Somasundaram",null))
     people.add(KotlinPerson(2,"Mrs","Sripriya","Raghavan",null))

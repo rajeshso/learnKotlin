@@ -1,8 +1,6 @@
 package com.raj.tutorials
 
 import java.io.FileInputStream
-import java.lang.ArithmeticException
-import java.lang.Exception
 
 @Throws(InterruptedException::class) //if you know this function is called from java
 fun divide(x: Int, y: Int): Double {
@@ -27,7 +25,7 @@ fun main() {
     println("result is $result")
 
     //try with resources
-    fun printFile(): Unit {
+    fun printFile() {
         val input = FileInputStream("file.txt")
 
         input.use {

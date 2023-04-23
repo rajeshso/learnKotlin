@@ -6,7 +6,7 @@ import kotlin.math.roundToInt
 fun main(args: Array<String>) {
     println("Hello World")
     var name = "Rajesh"
-    val surname: String = "Somasundaram"
+    val surname = "Somasundaram"
     println("Hello $name  $surname")
     println("Your name has ${name.length} characters")
     println("Your product cost is $10")
@@ -29,11 +29,11 @@ fun main(args: Array<String>) {
     println("myInteger is a ${myInteger::class.qualifiedName}")
     //val anotherInteger: Integer = myInteger //This is an error because java Integer an kotlin Int are different
     //Float
-    val myFloat : Float = 13.6f
+    val myFloat = 13.6f
     val result = myFloat + myInteger
     println(result)
     //big decimal
-    val bd1: BigDecimal = BigDecimal(17)
+    val bd1 = BigDecimal(17)
     val bd2: BigDecimal
     //println(bd2.abs()) // cannot compile because bd2 is a val that is not yet initialized
     bd2 = bd1.add(BigDecimal.ONE)

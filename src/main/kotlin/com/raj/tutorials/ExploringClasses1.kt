@@ -37,7 +37,7 @@ class UnauthorizedUserException : Throwable()
     return a[0].toUpperCase() + a.substring(1)
 }*/
 fun String.toSentenceCase() : String {
-    return this[0].toUpperCase() + this.substring(1)
+    return this[0].uppercaseChar() + this.substring(1)
 }
 
 fun main() {

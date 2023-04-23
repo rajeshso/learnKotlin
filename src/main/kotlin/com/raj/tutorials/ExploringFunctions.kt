@@ -1,7 +1,7 @@
 package com.raj.tutorials
 
 //public static functions - top level functions
-fun main(args: Array<String>): Unit {
+fun main(args: Array<String>) {
     printAString("hello")
     printSomeMaths(2.5, 1.5)
     printSomeMaths(y=2.5, x=1.5) //named params
@@ -9,22 +9,22 @@ fun main(args: Array<String>): Unit {
 
 //params are immutable by default
 // static functions - top level functions
-private fun printAString(value: String) : Unit {
+private fun printAString(value: String) {
     println("Hello World")
     println(addTwoNumbers(1.5))
     println(addTwoNumbers(1.5,1.5))
-    fun functionWithAFunctionIsByDefaultPrivateToTheOuterFunction(x: String): Unit {
+    fun functionWithAFunctionIsByDefaultPrivateToTheOuterFunction(x: String) {
         println("I am function within a function - ${x}")
     }
     functionWithAFunctionIsByDefaultPrivateToTheOuterFunction("abc")
 }
 
 //public static functions - top level functions
-fun printAStringPublic(value: String) : Unit {
+fun printAStringPublic(value: String) {
     println("Hello World")
 }
 
-fun printSomeMaths(x: Double, y: Double): Unit {
+fun printSomeMaths(x: Double, y: Double) {
     println("x + y = ${x+y}")
     println("x - y = ${x-y}")
 }
@@ -40,7 +40,7 @@ fun addTwoNumbers(x: Double, y: Double = 3.9): Double = x+y
 // }
 
 //one way to represent methodTakesALambda, but not the best way
-fun methodTakesALambda(input: String, action: java.util.function.Function<String, Int>): Unit {
+fun methodTakesALambda(input: String, action: java.util.function.Function<String, Int>) {
  println(action.apply(input))
 }
 

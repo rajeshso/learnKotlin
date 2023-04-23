@@ -3,7 +3,7 @@ package com.raj.tutorials
 import java.math.BigDecimal
 import java.util.*
 //Java code equivalent is com.raj.CastingCode
-fun main(args: Array<String>): Unit {
+fun main(args: Array<String>) {
     var result : Any;
 
     val randomNumber = Random().nextInt(3)
@@ -19,7 +19,7 @@ fun main(args: Array<String>): Unit {
         result = result.add(BigDecimal.TEN)
     }else {
         val tempResult =  result as String;
-        result = tempResult.toUpperCase();
+        result = tempResult.uppercase(Locale.getDefault());
     }
     println("Result is currently $result");
 }

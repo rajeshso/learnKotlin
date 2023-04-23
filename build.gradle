@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20-RC"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
     implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.7.0-RC'
     implementation group: 'com.github.vishna', name: 'watchservice-ktx', version: 'master-SNAPSHOT'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'

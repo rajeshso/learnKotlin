@@ -8,8 +8,8 @@ fun main(args: Array<String>) {
     val person = Person("Bob", true)
     val rectangle = Rectangle(9, 5)
     println("isSquare : ${rectangle.isSquare} isRectangle : ${rectangle.isRectangle} isValid : ${rectangle.isValid}")
-    val LOCAL_DATE_TIME_PAST_1 = LocalDateTime.of(2000, 1, 1, 0, 0, 0)
-    println(LOCAL_DATE_TIME_PAST_1)
+    val localDateTime = LocalDateTime.of(2000, 1, 1, 0, 0, 0)
+    println(localDateTime)
 
 }
 

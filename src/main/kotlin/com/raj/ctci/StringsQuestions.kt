@@ -121,7 +121,7 @@ fun compress(s1 : String) : String {
     fun compressRecursive(s : String, acc: String): String {
         if (s.isEmpty()) return acc
         val firstChar = s.take(1).toCharArray().first()
-        val len = s.length - s.dropWhile { it.toChar() == firstChar }.length
+        val len = s.length - s.dropWhile { it == firstChar }.length
         val remainingChars = s.dropWhile { it.toChar() == firstChar }
         return compressRecursive(remainingChars, acc.plus(firstChar).plus(len))
     }

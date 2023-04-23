@@ -30,7 +30,7 @@ data class KotlinPerson(val id: Long, val title: String,
 
     fun getUppercaseColor(): String {
         //return if (favoriteColor == null) "" else favoriteColor.toUpperCase()
-        return favoriteColor?.toUpperCase() ?: "" //this is called elvis operator
+        return favoriteColor?.uppercase(Locale.getDefault()) ?: "" //this is called elvis operator
     }
 
     fun getLastLetter(a: String): String = a.takeLast(1)

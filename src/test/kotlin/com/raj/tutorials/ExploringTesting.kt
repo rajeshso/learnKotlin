@@ -2,7 +2,6 @@ package com.raj.tutorials
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import java.lang.IllegalArgumentException
 import java.util.*
 import java.util.Calendar.DAY_OF_YEAR
 import java.util.Calendar.YEAR
@@ -22,7 +21,7 @@ class AgeCalculation {
 
 class AgeCalculationTest() {
     @Test
-    fun checkAgeBornToday(): Unit {
+    fun checkAgeBornToday() {
         assertEquals(-1, AgeCalculation().getAge(Calendar.getInstance()))
     }
 
@@ -34,7 +33,7 @@ class AgeCalculationTest() {
     }
 
     @Test
-    fun testForExceptions(): Unit {
+    fun testForExceptions() {
        val date = Calendar.getInstance()
         date.add(DAY_OF_YEAR, 10)
        Assertions.assertThrows(java.lang.IllegalArgumentException::class.java) {
