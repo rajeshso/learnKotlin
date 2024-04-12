@@ -55,41 +55,52 @@ import kotlin.test.assertEquals
  *
  */
 class TestTieRopes {
-    fun solution(k: Int, a: IntArray): Int {
+    fun solution1(k: Int, a: IntArray): Int {
         var result = 0
         var len = a.size
         var cursor = 0
-        var ropeLen = 0
+        var ropeLength = 0
         while (cursor < len) {
-            if (ropeLen>=k) {
-                result+=1
-                println("A cursor=$cursor ropeLen=$ropeLen result=$result")
-                ropeLen = 0
+            if (a[cursor] < k && ropeLength < k) {
+                ropeLength += a[cursor]
+                println("B cursor=$cursor a[$cursor]=${a[cursor]} ropeLen=$ropeLength result=$result")
                 cursor++
-                continue
-            }else if (cursor == (len)) {
-                break
-            }else if (a[cursor]<k && ropeLen<k) {
-                ropeLen+=a[cursor]
-                println("B cursor=$cursor a[$cursor]=${a[cursor]} ropeLen=$ropeLen result=$result")
-               // cursor++
-                continue
-            }else if (a[cursor] > k && ropeLen<k) {
-                result+=1
-                println("C cursor=$cursor a[$cursor]=${a[cursor]} ropeLen=$ropeLen result=$result")
-                ropeLen = 0
+                if (ropeLength >= k) {
+                    result += 1
+                    println("A cursor=$cursor ropeLen=$ropeLength result=$result")
+                    ropeLength = 0
+                }
+            } else if (a[cursor] >= k) {
+                result += 1
+                println("C cursor=$cursor ropeLen=$ropeLength result=$result")
+                ropeLength = 0
                 cursor++
-                continue
             }
         }
         return result
+    }
+    fun solution2(k: Int, a: IntArray): Int {
+        var count = 0
+        var ropeLength = 0
+        for (rope in a) {
+            ropeLength+=rope
+            if (ropeLength>=k) {
+                count++
+                ropeLength=0
+            }
+        }
+        return count
     }
 
     @Test
     fun testSimpleCase(): Unit {
         val k = 4
         val a = intArrayOf(1, 2, 3, 4, 1, 1, 3)
-        val result = solution(k, a)
-        assertEquals(3, result, "Expected 3 ropes of length greater than or equal to 4")
+        val result1 = solution1(k, a)
+        assertEquals(3, result1, "Expected 3 ropes of length greater than or equal to 4")
+
+        val result2 = solution2(k, a)
+        assertEquals(3, result2, "Expected 3 ropes of length greater than or equal to 4")
+
     }
 }
