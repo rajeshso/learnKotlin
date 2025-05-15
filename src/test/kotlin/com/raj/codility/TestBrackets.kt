@@ -1,7 +1,11 @@
 package com.raj.codility
 
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.util.*
-import kotlin.test.Test
+import java.util.stream.Stream
+import kotlin.test.assertEquals
 
 /**
  * Brackets
@@ -91,6 +95,24 @@ class TestBrackets
         }
         return if (stack.empty()) 1 else 0
     }
+    fun solution4(s: String): Int {
+        val charArray = s.toCharArray()
+        var stack = Stack<Char>()
+        for (c in charArray) {
+            if (c == '{' || c== '(' || c == '[') {
+                stack.push(c)
+            }else if (c == '}') {
+                if (stack.isEmpty() || stack.peek() == '{') stack.pop()
+            }else if (c == ')') {
+                if (stack.isEmpty() || stack.peek() == '(') stack.pop()
+            }else if (c == ']') {
+                if (stack.isEmpty() || stack.peek() == '[') stack.pop()
+            }else {
+                //do nothing
+            }
+        }
+        return if (stack.isEmpty()) 1 else 0
+    }
 
     private fun isNewItemsClosing(item: String): Boolean =
         close.contains(item)
@@ -108,49 +130,25 @@ class TestBrackets
         item: String
     ) = open.contains(item) || close.contains(item)
 
-
-    @Test
-    fun simpleCase1() {
-        val S = "{[()()]}"
-        val expected = 1
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
-        kotlin.test.assertEquals(expected, solution2(S), "Expected $expected but got ${solution2(S)}")
-        kotlin.test.assertEquals(expected, solution3(S), "Expected $expected but got ${solution3(S)}")
+    companion object {
+        @JvmStatic
+        fun testCases(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of("{[()()]}", 1),
+                Arguments.of("([)()]", 0),
+                Arguments.of("", 1),
+                Arguments.of("(ABC[)()]", 0),
+                Arguments.of("ABC[()()]", 1),
+                Arguments.of("ABC", 1)
+            )
+        }
     }
-    @Test
-    fun simpleCase2() {
-        val S = "([)()]"
-        val expected = 0
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
-    }
-    @Test
-    fun simpleCase3() {
-        val S = ""
-        val expected = 1
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
-    }
-    @Test
-    fun simpleCase4() {
-        val S = "(ABC[)()]"
-        val expected = 0
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
-    }
-    @Test
-    fun simpleCase5() {
-        val S = "ABC[()()]"
-        val expected = 1
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
-    }
-    @Test
-    fun simpleCase6() {
-        val S = "ABC"
-        val expected = 1
-        val result = solution1(S)
-        kotlin.test.assertEquals(expected, result, "Expected $expected but got $result")
+    @ParameterizedTest
+    @MethodSource("testCases")
+    fun testBrackets(input: String, expected: Int) {
+        assertEquals(expected, solution1(input), "Expected $expected but got ${solution1(input)}")
+        assertEquals(expected, solution2(input), "Expected $expected but got ${solution2(input)}")
+        assertEquals(expected, solution3(input), "Expected $expected but got ${solution3(input)}")
+        assertEquals(expected, solution4(input), "Expected $expected but got ${solution4(input)}")
     }
 }

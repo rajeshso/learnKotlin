@@ -1,9 +1,9 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.8.21'
+    id 'org.jetbrains.kotlin.jvm' version '2.1.21'
 }
 
-group 'com.raj'
-version '1.0-SNAPSHOT'
+group = 'com.raj'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -11,28 +11,22 @@ repositories {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.20"
-    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.7.0-RC'
-    implementation group: 'com.github.vishna', name: 'watchservice-ktx', version: 'master-SNAPSHOT'
-    implementation group: 'com.google.code.gson', name: 'gson', version : '2.7'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testImplementation group: 'org.jetbrains.kotlin', name: 'kotlin-test', version: '1.8.20-RC'
-    testImplementation group: 'org.jetbrains.spek', name: 'spek-api', version: '1.1.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0" // latest stable
+    implementation "com.github.vishna:watchservice-ktx:master-SNAPSHOT"
 
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.10.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.2"
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.assertj:assertj-core:3.24.2"
+
+    // ⚠️ SPEK is outdated; consider replacing it with Kotest or removing if unused
+    //testImplementation "org.jetbrains.spek:spek-api:1.1.5"
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.2'
 }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
-}
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+kotlin {
+    jvmToolchain(21) // Target Java 21
 }
 
 test {

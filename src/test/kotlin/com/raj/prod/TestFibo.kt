@@ -1,44 +1,39 @@
 package com.raj.prod
 
-
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.given
-import org.jetbrains.spek.api.dsl.it
+import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
+class TestFibo {
 
-class TestFibo : Spek({
-    describe("given 0 and 1") {
-        given("given 0") {
-            it("returns 0") {
-                assertEquals(0, fib(0))
-            }
+    @Nested
+    inner class GivenZeroAndOne {
+        @Test
+        fun `given 0 returns 0`() {
+            assertEquals(0, fib(0))
         }
-        given("given 1") {
-            it("returns 1") {
-                assertEquals(1, fib(1))
-            }
+
+        @Test
+        fun `given 1 returns 1`() {
+            assertEquals(1, fib(1))
         }
     }
 
-    describe("given 2, 3 and 4") {
-        given("given 2") {
-            it("returns 1") {
-                assertEquals(1, fib(2))
-            }
+    @Nested
+    inner class GivenTwoThreeAndFour {
+        @Test
+        fun `given 2 returns 1`() {
+            assertEquals(1, fib(2))
         }
-        given("given 3") {
-            it("returns 2") {
-                assertEquals(2, fib(3))
-            }
+
+        @Test
+        fun `given 3 returns 2`() {
+            assertEquals(2, fib(3))
         }
-        given("given 4") {
-            it("returns 3") {
-                assertEquals(3, fib(4))
-            }
+
+        @Test
+        fun `given 4 returns 3`() {
+            assertEquals(3, fib(4))
         }
     }
 }
-
-)

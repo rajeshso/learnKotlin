@@ -1,7 +1,13 @@
 package com.raj.codility
 
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 import java.util.*
-import kotlin.test.Test
+import java.util.stream.Stream
+
 
 /**
  * CyclicRotation
@@ -59,12 +65,40 @@ class TestCyclicRotation {
         println("After rotation = ${Arrays.toString(result)}")
         return result
     }
-    @Test
-    fun simpleCase() {
-        val A = intArrayOf(3, 8, 9, 7, 6)
-        val K = 3
-        val expected = intArrayOf(9, 7, 6, 3, 8)
-        val result = solution1(A, K)
-        assert(expected contentEquals result)
+    fun solution2(A: IntArray,K: Int) :IntArray {
+        var len = A.size
+        var srcIndex : Int
+        var srcValue : Int
+        var destIndex : Int
+        var result: IntArray = IntArray(len)
+        for(i in A.indices) {
+            srcIndex = i
+            srcValue = A[i]
+            destIndex = (srcIndex+K)%(len)
+            result[destIndex] = srcValue
+        }
+        return result
+    }
+    fun solution3(A: IntArray, K: Int): IntArray {
+        return A
+    }
+    companion object {
+        @JvmStatic
+        fun testArguments(): Stream<Arguments> {
+            return  Stream.of (
+                Arguments.of(intArrayOf(3, 8, 9, 7, 6), 3, intArrayOf(9, 7, 6, 3, 8)),
+                Arguments.of(intArrayOf(0, 0, 0), 1, intArrayOf(0, 0, 0)),
+                Arguments.of(intArrayOf(1, 2, 3, 4), 4, intArrayOf(1, 2, 3, 4)),
+                Arguments.of(intArrayOf(1, 2, 3, 4), 0, intArrayOf(1, 2, 3, 4)),
+                Arguments.of(intArrayOf(1, 2, 3, 4), 1, intArrayOf(4, 1, 2, 3)),
+                Arguments.of(intArrayOf(1, 2, 3, 4), 2, intArrayOf(3, 4, 1, 2))
+            )
+        }
+    }
+    @ParameterizedTest
+    @MethodSource("testArguments")
+    fun testSimple1(A: IntArray, k: Int, expected: IntArray): Unit {
+        assertArrayEquals(expected, solution1(A,k), "Expected ${expected} to be equal to ${solution1(A,k)}")
+        assertThat(solution2(A,k)).isEqualTo(expected)
     }
 }
